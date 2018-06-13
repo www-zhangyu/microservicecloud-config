@@ -64,7 +64,7 @@ mybatis:
 
 ####spring
 spring:
-   profiles: dev
+   profiles: test
    application:
     name: microservicecloud-dept  #对外暴露的微服务的名字
    datasource:
