@@ -1,21 +1,8 @@
-spring:
-  profiles:
-    active:
-    - dev
-  
----
 
-spring:
-  profiles: dev
-  application:
-    name: microservicecloud-config-dev
-
----
-
-spring:
-  profiles: test
-  application:
-    name: microservicecloud-config-test
-
-
-# 保存为UTF-8格式
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/
+  instance:
+      instance-id: microservicecloud-config  #微服务注册进eureka server时的自定义服务名称
+      prefer-ip-address: true  #是否显示IP地址
