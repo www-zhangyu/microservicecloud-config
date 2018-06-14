@@ -45,7 +45,7 @@ management:
   endpoints:
     web:
       exposure:
-        include: refresh
+        include: bus-refresh
 
 
 info:
