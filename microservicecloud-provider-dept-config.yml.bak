@@ -1,0 +1,125 @@
+server:
+  port: 8087
+
+#### mybatis
+mybatis:
+  config-location: classpath:mybatis/mybatis.cfg.xml        # mybatis配置文件所在路径
+  type-aliases-package: springboot.entity                  # 所有Entity别名类所在包
+  mapper-locations:
+  - classpath:mybatis/mapper/**/*.xml                       # mapper映射文件
+
+
+####spring
+spring:
+   thymeleaf:
+     mode: HTML5
+     encoding: UTF-8
+     cache: false
+   profiles: dev
+   application:
+    name: microservicecloud-dept  #对外暴露的微服务的名字
+   datasource:
+   # 当前数据源操作类型
+    type: com.alibaba.druid.pool.DruidDataSource
+     # mysql驱动包
+    driver-class-name:  com.mysql.jdbc.Driver
+  # 数据库名称
+    url: jdbc:mysql://127.0.0.1:3306/springdemo
+    username: bmisAdmin
+    password: qkxs@1234
+    dbcp2:
+      min-idle: 5                                           # 数据库连接池的最小维持连接数
+      initial-size: 5                                       # 初始化连接数
+      max-total: 5                                          # 最大连接数
+      max-wait-millis: 200                                  # 等待连接获取的最大超时时间
+
+logging:
+  config: classpath:logging-config.xml
+
+  # 将客户端注册进eureka服务列表内
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka  #和eureka server设置的url一致才能将服务注册到服务中心的列表中
+  instance:
+    instance-id: microservicecloud-dept8007  #微服务注册进eureka server时的自定义服务名称
+    prefer-ip-address: true  #是否显示IP地址
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: bus-refresh
+
+
+info:
+  app.name: microservicecloud
+  company.name: www.example.com
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$
+
+---
+
+
+server:
+  port: 8087
+
+#### mybatis
+mybatis:
+  config-location: classpath:mybatis/mybatis.cfg.xml        # mybatis配置文件所在路径
+  type-aliases-package: springboot.entity                  # 所有Entity别名类所在包
+  mapper-locations:
+  - classpath:mybatis/mapper/**/*.xml                       # mapper映射文件
+
+
+####spring
+spring:
+   profiles: test
+   application:
+    name: microservicecloud-dept  #对外暴露的微服务的名字
+   datasource:
+   # 当前数据源操作类型
+    type: com.alibaba.druid.pool.DruidDataSource
+     # mysql驱动包
+    driver-class-name:  com.mysql.jdbc.Driver
+  # 数据库名称
+    url: jdbc:mysql://127.0.0.1:3306/springdemo2
+    username: bmisAdmin
+    password: qkxs@1234
+    dbcp2:
+      min-idle: 5                                           # 数据库连接池的最小维持连接数
+      initial-size: 5                                       # 初始化连接数
+      max-total: 5                                          # 最大连接数
+      max-wait-millis: 200                                  # 等待连接获取的最大超时时间
+
+logging:
+  config: classpath:logging-config.xml
+
+  # 将客户端注册进eureka服务列表内
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka  #和eureka server设置的url一致才能将服务注册到服务中心的列表中
+  instance:
+    instance-id: microservicecloud-dept8007-test  #微服务注册进eureka server时的自定义服务名称
+    prefer-ip-address: true  #是否显示IP地址
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh
+
+
+info:
+  app.name: microservicecloud
+  company.name: www.example.com
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$
+
+
+
+
+
+
+

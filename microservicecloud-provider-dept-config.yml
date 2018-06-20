@@ -11,6 +11,10 @@ mybatis:
 
 ####spring
 spring:
+   thymeleaf:
+     mode: HTML5
+     encoding: UTF-8
+     cache: false
    profiles: dev
    application:
     name: microservicecloud-dept  #对外暴露的微服务的名字
@@ -20,7 +24,7 @@ spring:
      # mysql驱动包
     driver-class-name:  com.mysql.jdbc.Driver
   # 数据库名称
-    url: jdbc:mysql://127.0.0.1:3306/springdemo
+    url: jdbc:mysql://127.0.0.1:3306/springdemo?useSSL=false
     username: bmisAdmin
     password: qkxs@1234
     dbcp2:
